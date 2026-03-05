@@ -24,12 +24,12 @@ func AuthInterceptor(
 
 		md, ok := metadata.FromIncomingContext(ctx)
 		if !ok {
-			return nil, status.Error(codes.Unauthenticated, "missing metadata")
+			return nil, status.Error(codes.Unauthenticated, "missing metadata in context")
 		}
 
 		authHeader := md["authorization"]
 		if len(authHeader) == 0 {
-			return nil, status.Error(codes.Unauthenticated, "missing token")
+			return nil, status.Error(codes.Unauthenticated, "missing authorization token")
 		}
 
 		token := strings.TrimPrefix(authHeader[0], "Bearer ")
