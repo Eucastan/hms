@@ -53,8 +53,8 @@ message DeleteLabRequest {
 }
 
 message LabResponse {
-    string status = 2;
-    string message = 3;
+    string status = 1;
+    string message = 2;
 }
 
 message GetLabResultRequest {
