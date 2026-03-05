@@ -4,13 +4,12 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Eucastan/hms/auth/internal/configs"
-	"github.com/Eucastan/shared/internal/utils"
+	"github.com/Eucastan/hms/shared/internal/utils"
 
 	"github.com/gin-gonic/gin"
 )
 
-func AuthMiddleware(cfg *configs.Config) gin.HandlerFunc {
+func AuthMiddleware(cfg string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
 		if authHeader == "" {
@@ -27,14 +26,14 @@ func AuthMiddleware(cfg *configs.Config) gin.HandlerFunc {
 		tokenStr := parts[1]
 
 		claims, err := utils.ValidateToken(tokenStr, cfg)
-		if err != nil || !claims.Valid {
+		if err != nil {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Invalid token"})
 			return
 		}
 
 		c.Set("token", tokenStr)
 
-		c.Set("user_id", claims.UserId)
+		c.Set("user_id", claims.UserID)
 		c.Set("role", claims.Role)
 
 		c.Next()

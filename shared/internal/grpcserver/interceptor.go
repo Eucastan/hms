@@ -4,8 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/Eucastan/hms/auth/internal/configs"
-	"github.com/Eucastan/shared/internal/utils"
+	"github.com/Eucastan/hms/shared/internal/utils"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -14,7 +13,7 @@ import (
 )
 
 func AuthInterceptor(
-	cfg *configs.Config,
+	cfg string,
 ) grpc.UnaryServerInterceptor {
 	return func(
 		ctx context.Context,
@@ -34,7 +33,7 @@ func AuthInterceptor(
 
 		token := strings.TrimPrefix(authHeader[0], "Bearer ")
 
-		claims, err := utils.ValidateToken(token, cfg.JWTSecret)
+		claims, err := utils.ValidateToken(token, cfg)
 		if err != nil {
 			return nil, status.Error(codes.Unauthenticated, "invalid token")
 		}
