@@ -4,10 +4,8 @@ import (
 	"errors"
 	"fmt"
 
-	"google.golang.org/codes"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/status"
 )
 
 var (
