@@ -10,8 +10,7 @@ func RequiredRole(role string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		userRole := c.MustGet("role").(string)
 		if userRole != role {
-			c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized access"})
-			c.Abort()
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized access"})
 			return
 		}
 
