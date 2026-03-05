@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package patient.v1;
+
+option go_package = "github.com/Eucastan/hms/proto/patient;patient";
+
+service PatientService {
+    rpc GetPatient(GetPatientRequest) returns (GetPatientResponse);
+    rpc SearchPatients(SearchPatientsRequest) returns (SearchPatientsResponse);
+}
+
+message Patient{
+    string patient_id = 1;
+    string hospital_no = 2;
+    string first_name = 3;
+    string last_name = 4;
+    string gender = 5;
+    string address = 6;
+    string phone = 7;
+    string next_of_kin_name = 8;
+}
+
+message GetPatientRequest {
+    string patient_id = 1;
+}
+
+message GetPatientResponse {
+    Patient patient_info = 1;
+}
+
+message SearchPatientsRequest {
+    string name = 1;           // Partial name match (first or last)
+    string hospital_no = 2;    // Exact hospital number
+}
+
+message SearchPatientsResponse {
+    repeated Patient patients = 1;
+}

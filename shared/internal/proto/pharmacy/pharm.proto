@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package pharmacy.v1;
+
+option go_package = "github.com/Eucastan/hms/proto/pharmacy;pharm";
+
+service pharmacyService {
+    rpc CreatePrescription(PrescriptionRequest) returns (PrescriptionResponse);
+}
+
+message PrescriptionRequest {
+	string patient_id = 1;
+	string doctor_id = 2;
+	string drug_name = 3;
+	string dosage = 4;
+}
+
+message PrescriptionResponse {
+    string status = 1;
+}

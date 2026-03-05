@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package billing.v1;
+
+option go_package = "github.com/Eucastan/hms/proto/billing/billing.proto;billing";
+
+service BillingService {
+  rpc CreateBillCharge(CreateBillChargeRequest) returns (CreateBillChargeResponse);
+}
+
+message CreateBillChargeRequest {
+  string patient_id = 1;
+  string source_ref_id = 2;
+  string reference_type = 3;
+  string description = 4;
+  int32 quantity = 5;
+  double unit_price = 6;
+}
+
+message CreateBillChargeResponse {
+  string bill_charge_id = 1;
+  string invoice_id = 2;
+  double invoice_total = 3;
+}

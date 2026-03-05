@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package lab.v1;
+
+option go_package = "github.com/Eucastan/hms/proto/lab;labpb";
+
+service LabService {
+    rpc CreateLabRequest(LabRequest) returns (LabResponse);
+    rpc GetLabRequest(GetLabRequest) returns (LabResponse);
+    rpc UpdateLabRequest(UpdateLabRequest) returns (LabResponse);
+    rpc DeleteLabRequest(DeleteLabRequest) returns (LabResponse);
+
+    rpc GetLabResult(GetLabResultRequest) returns (LabResultResponse);
+}
+
+message LabRequest {
+    string patient_id = 1;
+    string request_by = 2;
+    string test_type = 3;
+    string priority = 4;
+    string status = 5;
+    string notes = 6;
+}
+
+message LabResult {
+    string PerformedBy = 1;   
+	string PatientID = 2;
+	string RequestBy = 3; 
+	string TestType = 4; 
+	string ResultValue = 5;  
+	string Unit = 6;
+	string ReferenceRange = 7;
+	string Comments = 8;
+	bool   Verified = 9;  
+}
+
+message GetLabRequest {
+    string patient_id = 1;
+}
+
+message UpdateLabRequest {
+    string id = 1;
+    string patient_id = 2;
+    string request_by = 3;
+    string test_type = 4;
+    string priority = 5;
+    string status = 6;
+    string notes = 7;
+}
+
+message DeleteLabRequest {
+    string id = 1;
+}
+
+message LabResponse {
+    string status = 2;
+    string message = 3;
+}
+
+message GetLabResultRequest {
+    string patient_id = 1;
+}
+
+message LabResultResponse {
+    repeated LabResult results = 1;
+}

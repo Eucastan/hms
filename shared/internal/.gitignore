@@ -1,0 +1,36 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go build output
+/bin/
+/build/
+/dist/
+
+# Go workspace
+go.work
+go.work.sum
+
+#protobuf generated files
+*.pb.go
+*._grpc.pb.go
+
+# Enviroment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db 
