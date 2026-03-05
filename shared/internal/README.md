@@ -7,7 +7,7 @@ This folder contains shared files that are used through out the app. It contains
 - auth > All _HTTP_ Middlewares (authmiddleware, ratelimiter, RBAC)
 - grpcserver > All _GRPC_ Middleware (interceptors, retry policy JSON)
 - proto > Proto Definitions Folders (billing, lab, patient, pharmacy) .proto
-- utils > Contains JWT for now
+- utils > Contains JWT and error files for now
 
 # Dependencies
 
