@@ -6,14 +6,33 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func RequiredRole(role string) gin.HandlerFunc {
+func RequiredRole(allowedRoles ...string) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		userRole := c.MustGet("role").(string)
-		if userRole != role {
-			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized access"})
+		userRole, exists := c.Get("role")
+		if !exists {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+				"error": "Missing role in context",
+			})
 			return
 		}
 
-		c.Next()
+		role, ok := userRole.(string)
+		if !ok {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+				"error": "Invalid role type",
+			})
+			return
+		}
+		for _, allowed := range allowedRoles {
+			if role == allowed {
+				c.Next()
+				return
+			}
+		}
+
+		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
+			"error": "Unauthorized access",
+		})
+
 	}
 }
