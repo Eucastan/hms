@@ -38,7 +38,24 @@ func AuthInterceptor(
 			return nil, status.Error(codes.Unauthenticated, "invalid token")
 		}
 
-		ctx = context.WithValue(ctx, "claims", claims)
+		// Propagate useful values into context
+		ctx = context.WithValue(ctx, "user_id", claims.UserID)
+		ctx = context.WithValue(ctx, "role", claims.Role)
+		ctx = context.WithValue(ctx, "jwt_token", token)
+
+		// Also propagate metadata for outgoing calls
+		newMD := metadata.New(map[string]string{
+			"user_id":       claims.UserID,
+			"role":          claims.Role,
+			"authorization": "Bearer " + token,
+		})
+
+		// Merge with existing outgoing metadata if any
+		outgoingMD, _ := metadata.FromOutgoingContext(ctx)
+		newMD = metadata.Join(outgoingMD, newMD)
+
+		ctx = metadata.NewOutgoingContext(ctx, newMD)
+
 		return handler(ctx, req)
 
 	}
