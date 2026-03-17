@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package patient.v1;
 
-option go_package = "github.com/Eucastan/hms/shared/internal/proto/patient;patient";
+option go_package = "github.com/Eucastan/hms/shared/pkg/proto/patient;patient";
 
 service PatientService {
     rpc GetPatient(GetPatientRequest) returns (GetPatientResponse);

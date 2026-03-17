@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package billing.v1;
 
-option go_package = "github.com/Eucastan/hms/shared/internal/proto/billing/billing.proto;billing";
+option go_package = "github.com/Eucastan/hms/shared/pkg/proto/billing/billing.proto;billing";
 
 service BillingService {
   rpc CreateBillCharge(CreateBillChargeRequest) returns (CreateBillChargeResponse);

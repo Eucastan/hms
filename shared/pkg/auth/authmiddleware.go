@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/Eucastan/hms/shared/internal/utils"
+	"github.com/Eucastan/hms/shared/pkg/utils"
 
 	"github.com/gin-gonic/gin"
 )

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package lab.v1;
 
-option go_package = "github.com/Eucastan/hms/shared/internal/proto/lab;labpb";
+option go_package = "github.com/Eucastan/hms/shared/pkg/proto/lab;labpb";
 
 service LabService {
     rpc CreateLabTestRequest(CreateLabRequest) returns (LabResponse);

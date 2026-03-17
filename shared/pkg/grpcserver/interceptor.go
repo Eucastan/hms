@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/Eucastan/hms/shared/internal/utils"
+	"github.com/Eucastan/hms/shared/pkg/utils"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
