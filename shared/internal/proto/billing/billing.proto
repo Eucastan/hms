@@ -2,10 +2,11 @@ syntax = "proto3";
 
 package billing.v1;
 
-option go_package = "github.com/Eucastan/hms/proto/billing/billing.proto;billing";
+option go_package = "github.com/Eucastan/hms/shared/internal/proto/billing/billing.proto;billing";
 
 service BillingService {
   rpc CreateBillCharge(CreateBillChargeRequest) returns (CreateBillChargeResponse);
+  rpc RefundBillCharge(RefundBillChargeRequest) returns (RefundBillChargeResponse);
 }
 
 message CreateBillChargeRequest {
@@ -14,11 +15,22 @@ message CreateBillChargeRequest {
   string reference_type = 3;
   string description = 4;
   int32 quantity = 5;
-  double unit_price = 6;
+  double total_price = 6;
 }
 
 message CreateBillChargeResponse {
   string bill_charge_id = 1;
   string invoice_id = 2;
   double invoice_total = 3;
+  string status = 4;
+	string message = 5;
+}
+
+message RefundBillChargeRequest {
+    string charge_id = 1;
+}
+
+message RefundBillChargeResponse {
+    string status = 1;
+    string message = 2;
 }

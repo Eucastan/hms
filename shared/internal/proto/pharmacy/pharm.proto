@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package pharmacy.v1;
 
-option go_package = "github.com/Eucastan/hms/proto/pharmacy;pharm";
+option go_package = "github.com/Eucastan/hms/shared/internal/proto/pharmacy;pharm";
 
 service pharmacyService {
     rpc CreatePrescription(PrescriptionRequest) returns (PrescriptionResponse);
@@ -17,4 +17,5 @@ message PrescriptionRequest {
 
 message PrescriptionResponse {
     string status = 1;
+	string message = 2;
 }
