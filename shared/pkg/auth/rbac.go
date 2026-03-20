@@ -30,8 +30,8 @@ func RequiredRole(allowedRoles ...string) gin.HandlerFunc {
 			}
 		}
 
-		c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
-			"error": "Unauthorized access",
+		c.AbortWithStatusJSON(http.StatusForbidden, gin.H{
+			"error": "Forbidden: unauthorized access",
 		})
 
 	}
