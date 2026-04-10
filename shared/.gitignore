@@ -12,10 +12,6 @@
 /build/
 /dist/
 
-# Go workspace
-go.work
-go.work.sum
-
 #protobuf generated files
 *.pb.go
 *._grpc.pb.go
