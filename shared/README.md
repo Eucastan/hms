@@ -1,14 +1,16 @@
 # HMS Shared Files
 
-This folder contains shared files that are used through out the app. It contains reusable files like middlewares for _HTTP_ and _GRPC_, _proto definition_ files, _utility_ files, and gitignore. This folder house important files needed and reused throughout the application.
+This folder contains shared files that are used through out the app. It contains reusable files like middlewares for **HTTP** and interceptors for **GRPC**, **proto definition** files, **utility** files, and gitignore.
 
-# Files And Folders
+## Files And Folders
 
-- auth > All _HTTP_ Middlewares (authmiddleware, ratelimiter, RBAC)
-- grpcserver > All _GRPC_ Middleware (interceptors, retry policy JSON)
-- proto > Proto Definitions Folders (billing, lab, patient, pharmacy) .proto
-- utils > Contains JWT and error files for now
+- **auth** All **HTTP** Middlewares (authmiddleware, ratelimiter, RBAC)
+- **grpcserver** All **GRPC** Middleware (interceptors, retry policy JSON)
+- **healthcheck** (health, readiness, liveness for **kubernetes**)
+- **logger** All logs, **zap**
+- **proto** Proto Definitions Folders (billing, lab, patient, pharmacy) .proto
+- **utils** Contains JWT and error files for now
 
-# Dependencies
+## Dependencies
 
 - Go, Gin, GRPC, JWT etc.
