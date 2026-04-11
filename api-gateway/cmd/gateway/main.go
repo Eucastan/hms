@@ -6,7 +6,7 @@ import (
 	"net/http/httputil"
 	"net/url"
 
-	"github.com/Eucastan/hms/api-gateway/config"
+	"github.com/Eucastan/hms/api-gateway/configs"
 	"github.com/Eucastan/hms/shared/pkg/auth"
 	"github.com/Eucastan/hms/shared/pkg/healthcheck"
 
@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	cfg, err := config.Load()
+	cfg, err := configs.Load()
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
