@@ -1,0 +1,29 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go build output
+/bin/
+/build/
+/dist/
+
+# Enviroment variables
+.env
+.env.*
+!.env.example
+config.yaml
+
+# Logs
+*.log
+logs/
+
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db 
