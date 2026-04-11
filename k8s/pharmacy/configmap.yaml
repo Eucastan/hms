@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pharmacy-config
+  namespace: hms
+data:
+  HTTP_PORT: "4004"
+  GRPC_PORT: "50052"
+  GRPC_BILLING_PORT: "50055"
+  GRPC_PATIENT_PORT: "50054"
+
+  SERVICE_NAME: "Pharmacy Service"
+  VERSION: "v1.0.0"
+  
+  

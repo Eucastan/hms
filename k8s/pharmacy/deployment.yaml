@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pharmacy
+  labels:
+    app: pharmacy
+  namespace: hms
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pharmacy
+  template:
+    metadata:
+      labels:
+        app: pharmacy
+    spec:
+      containers:
+      - name: pharmacy
+        image: eucastan001/pharmacy:latest
+        ports:
+        - containerPort: 4004
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+          requests:
+            cpu: "250m"
+            memory: "128Mi"
+        envFrom:
+        - configMapRef:
+            name: pharmacy-config
+        - secretRef:
+            name: pharmacy-secrets
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: 4004
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 4004
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5

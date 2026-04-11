@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: clinical-config
+  namespace: hms
+data:
+  HTTP_PORT: "4002"
+  GRPC_PORT: "50051"
+  GRPC_LAB_PORT: "50053"
+  GRPC_PHARMACY_PORT: "50052"
+  GRPC_PATIENT_PORT: "50054"
+
+  SERVICE_NAME: "Clinical Service"
+  VERSION: "v1.0.0"

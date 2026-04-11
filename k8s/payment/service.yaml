@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: payment
+  name: payment
+spec:
+  ports:
+  - name: http
+    port: 4005
+    protocol: TCP
+    targetPort: 4005
+  selector:
+    app: payment
+  type: ClusterIP

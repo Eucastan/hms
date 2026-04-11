@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: lab
+  name: lab
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lab
+  template:
+    metadata:
+      labels:
+        app: lab
+    spec:
+      containers:
+      - image: eucastan001/lab:latest
+        name: lab
+        ports:
+        - containerPort: 4003
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+          requests:
+            cpu: "250m"
+            memory: "128Mi"
+        envFrom:
+        - configMapRef:
+            name: lab-config
+        - secretRef:
+            name: lab-secrets
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: 4003
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 4003
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5

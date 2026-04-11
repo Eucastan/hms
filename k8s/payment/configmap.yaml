@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payment-config
+  namespace: hms
+data:
+  HTTP_PORT: "4005"
+  GRPC_PORT: "50055"
+  
+  SERVICE_NAME: "Payment Service"
+  VERSION: "v1.0.0"

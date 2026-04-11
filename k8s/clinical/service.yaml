@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: hms-clinical
+  name: hms-clinical
+spec:
+  ports:
+  - name: http
+    port: 4002
+    protocol: TCP
+    targetPort: 4002
+  selector:
+    app: hms-clinical
+  type: ClusterIP
+

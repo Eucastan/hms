@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+  namespace: hms
+data:
+  HTTP_PORT: "4000"
+
+  SERVICE_NAME: "Auth Service"
+  VERSION: "v1.0.0"

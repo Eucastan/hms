@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lab-config
+  namespace: hms
+data:
+  HTTP_PORT: "4003"
+  GRPC_PORT: "50053"
+
+  SERVICE_NAME: "Lab Service"
+  VERSION: "v1.0.0"

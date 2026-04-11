@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient
+  labels:
+    app: patient
+  namespace: hms
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: patient
+  template:
+    metadata:
+      labels:
+        app: patient
+    spec:
+      containers:
+      - name: patient
+        image: eucastan001/patient:latest
+        ports:
+        - containerPort: 4001
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "256Mi"
+          requests:
+            cpu: "250m"
+            memory: "128Mi"
+        envFrom:
+        - configMapRef:
+            name: patient-config
+        - secretRef:
+            name: patient-secrets
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: 4001
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 4001
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 5
