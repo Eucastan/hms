@@ -8,10 +8,12 @@ import (
 )
 
 type Config struct {
-	DSN       string
-	JWTSecret string
-	HTTPPort  string
-	GRPCPort  string
+	DSN         string
+	JWTSecret   string
+	HTTPPort    string
+	GRPCPort    string
+	ServiceName string
+	Version     string
 }
 
 func Load() (*Config, error) {
