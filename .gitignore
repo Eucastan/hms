@@ -1,0 +1,67 @@
+# Go & Build Artifacts
+
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+/bin/
+/build/
+/dist/
+**/bin/
+**/dist/
+
+# Environment & Secrets
+
+.env
+.env.local
+.env.*.local
+!.env.example
+config.yaml
+*.key
+*.pem
+
+# Logs & Temporary Files
+
+*.log
+logs/
+*.tmp
+*.temp
+coverage.txt
+test.db
+
+# IDE & Editor
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-*
+
+# OS & Misc
+
+.DS_Store
+Thumbs.db
+*.pdf
+*.doc
+
+# Docker & Kubernetes
+
+.dockerignore.bak
+**/.dockerignore.bak
+
+# Testing & Mocks
+**/testdata/
+**/mock/
+
+# Go Modules (optional)
+
+vendor/          # Only if you're using vendoring
+
+# Temporary files
+
+*.swp
+*.swo
+*~
