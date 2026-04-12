@@ -101,12 +101,10 @@ make down
 - Basic Kubernetes manifests
 - CI/CD pipeline
 
-**Note:** Due to hardware limitations(8GB RAM laptop), running all services simultaneously in a VirtualBox VM(4GB RAM) is unstable. Each service builds and runs successfully individually.
-
 ## Improvements
 
 This project is 100% open for improvements.
 
-- Add observability (OpenTelemetry + Prometheus + Grafana)
+- Adding observability (OpenTelemetry + Prometheus + Grafana)
 - Circuit breakers
 - Complete end-to-end integration tests
