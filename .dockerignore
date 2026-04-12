@@ -1,0 +1,10 @@
+# Root .dockerignore - Keep it minimal
+.git
+.gitignore
+*.log
+.env
+.DS_Store
+bin/
+**/bin/
+**/dist/
+tmp/
